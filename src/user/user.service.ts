@@ -3,10 +3,15 @@ import { UserDTO } from './user.dto';
 
 @Injectable()
 export class UserService {
+  userArray: UserDTO[] = [];
+  userInfo: UserDTO;
+
   login(user: UserDTO) {
-    if (user.username == "root" && user.password == "12345") {
-      return true;
-    }
-    return false;
+    this.userInfo = this.userArray.filter(x => x.username === user.username && x.password === user.password)[0];
+    return this.userInfo;
+  }
+
+  register(user: UserDTO) {
+    this.userArray.push(user);
   }
 }
