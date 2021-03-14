@@ -15,4 +15,9 @@ export class UserController {
   register(@Body() user: UserDTO): void {
     this.userService.register(user);
   }
+
+  @Post('change_password')
+  changePassword(@Body() user: UserDTO): void {
+    this.userService.changePassword();
+  }
 }
